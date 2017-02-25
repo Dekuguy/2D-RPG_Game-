@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 316384516c3748741bd199eea0bcaf81
+timeCreated: 1484340720
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Medieval Sharp
+  fontNames:
+  - Medieval Sharp
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 232b87c65db686e4ba707152796a9126
+timeCreated: 1486555503
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - MovementModel: {instanceID: 0}
+  - MovementView: {instanceID: 0}
+  - EnemyDieEffect: {fileID: 1387254149846138, guid: f8b38f0f9e0fe8e43a5da6e02859501c,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - DialogeBox
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - NoCollision
+  - DontCollideWithPlayer
+  - Player
+  - Enviroment
+  - Enemys
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1741216185
+    locked: 0
+  - name: Background Enemys
+    uniqueID: 2415110395
+    locked: 0
+  - name: Behind Player
+    uniqueID: 1703186067
+    locked: 0
+  - name: Player
+    uniqueID: 2457878347
+    locked: 0
+  - name: AbovePlayer
+    uniqueID: 3890321831
+    locked: 0
+  - name: Foreground
+    uniqueID: 975879123
+    locked: 0
+  - name: Foreground Enemys
+    uniqueID: 4128497003
+    locked: 0
+  - name: AboveAll Foreground
+    uniqueID: 1934646089
+    locked: 0
+  - name: UI
+    uniqueID: 1598298781
+    locked: 0

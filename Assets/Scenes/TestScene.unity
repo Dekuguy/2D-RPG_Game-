@@ -144,6 +144,21 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.77
       objectReference: {fileID: 0}
+    - target: {fileID: 114146723004951984, guid: 2499c887b510bf34881ecae0a7ec5ebd,
+        type: 2}
+      propertyPath: ShowGizmos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114146723004951984, guid: 2499c887b510bf34881ecae0a7ec5ebd,
+        type: 2}
+      propertyPath: MovableScale.x
+      value: 5.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114146723004951984, guid: 2499c887b510bf34881ecae0a7ec5ebd,
+        type: 2}
+      propertyPath: MovableScale.y
+      value: 2.86
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2499c887b510bf34881ecae0a7ec5ebd, type: 2}
   m_IsPrefabParent: 0
@@ -525,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_color: {r: 1, g: 1, b: 1, a: 1}
   animationpathpointsradius: 0.2
-  ShowGizmos: 1
+  ShowGizmos: 0
   _animPoints: {fileID: 313097983}
 --- !u!114 &313097983
 MonoBehaviour:
@@ -1174,6 +1189,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1189395553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1189395548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883c63281ccac944c88a20196e5ced68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1541868591
 GameObject:
   m_ObjectHideFlags: 0

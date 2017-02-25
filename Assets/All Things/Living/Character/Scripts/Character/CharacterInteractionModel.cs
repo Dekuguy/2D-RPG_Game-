@@ -2,23 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterInteractionModel : MonoBehaviour {
-
-    [SerializeField]
-    private float interactiveradius = 0.8f;
-    [SerializeField]
-    private float YOffset = 0f;
-
-    [Header("Debug")]
-    [SerializeField]
-    private bool ShowGizmos = false;
+public class CharacterInteractionModel : MonoBehaviour
+{
 
 	private GameObject LiftedUpOBJ;
 
 
-    public void OnInteract()
-    {
-		if(LiftedUpOBJ != null)
+	public void OnInteract()
+	{
+		if (LiftedUpOBJ != null)
 		{
 			LiftedUpOBJ.GetComponent<InteractablePickUp>().Throw(Character.m_MovementModel.GetFacingDirection());
 			Character.m_MovementModel.ThrowLiftedObject();
@@ -26,46 +18,53 @@ public class CharacterInteractionModel : MonoBehaviour {
 			return;
 		}
 
-        InteractableBase usableInteractable = FindUsableInteractable();
-        if (usableInteractable == null)
-        {
-            return;
-        }
-        //Debug.Log("Found Interactable! " + usableInteractable.name);
-        usableInteractable.OnInteract();
-    }
+		InteractableBase usableInteractable = FindUsableInteractable();
+		if (usableInteractable == null)
+		{
+			return;
+		}
+		//Debug.Log("Found Interactable! " + usableInteractable.name);
+		usableInteractable.OnInteract();
+	}
 
-    InteractableBase FindUsableInteractable()
-    {
-        Collider2D[] closecolliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, YOffset), interactiveradius);
+	public Collider2D[] getCloseColliders()
+	{
+		BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
 
-        InteractableBase closestInteractable = null;
-        float AngleToClosestInteractable = Mathf.Infinity;
+		return Physics2D.OverlapAreaAll((Vector2)transform.position + boxCollider.offset + boxCollider.size * 0.6f, (Vector2)transform.position + boxCollider.offset - boxCollider.size * 0.6f);
+	}
 
-        for (int i = 0; i < closecolliders.Length; i++)
-        {
-            InteractableBase colliderInteractable = closecolliders[i].GetComponent<InteractableBase>();
+	InteractableBase FindUsableInteractable()
+	{
+		Collider2D[] closecolliders = getCloseColliders();
 
-            if (colliderInteractable == null)
-            {
-                continue;
-            }
+		InteractableBase closestInteractable = null;
+		float AngleToClosestInteractable = Mathf.Infinity;
 
-            Vector3 directionToInteractable = closecolliders[i].transform.position - transform.position;
-            float angleToInteractable = Vector3.Angle(directionToInteractable, Character.m_MovementModel.GetFacingDirection());
-            if (angleToInteractable < 40)
-            {
-                if (angleToInteractable < AngleToClosestInteractable)
-                {
-                    closestInteractable = colliderInteractable;
-                    AngleToClosestInteractable = angleToInteractable;
-                }
-            }
+		for (int i = 0; i < closecolliders.Length; i++)
+		{
+			InteractableBase colliderInteractable = closecolliders[i].GetComponent<InteractableBase>();
 
-            //Debug.Log(i + ": " + closecolliders[i].name + " - Angle: " + angleToInteractable);
-        }
-        return closestInteractable;
-    }
+			if (colliderInteractable == null)
+			{
+				continue;
+			}
+
+			Vector3 directionToInteractable = closecolliders[i].transform.position - transform.position;
+			float angleToInteractable = Vector3.Angle(directionToInteractable, Character.m_MovementModel.GetFacingDirection());
+			if (angleToInteractable < 40)
+			{
+				if (angleToInteractable < AngleToClosestInteractable)
+				{
+					closestInteractable = colliderInteractable;
+					AngleToClosestInteractable = angleToInteractable;
+				}
+			}
+
+			//Debug.Log(i + ": " + closecolliders[i].name + " - Angle: " + angleToInteractable);
+		}
+		return closestInteractable;
+	}
 
 	public void LiftUpObject(GameObject obj)
 	{
@@ -92,13 +91,45 @@ public class CharacterInteractionModel : MonoBehaviour {
 		obj.SendMessage("PickUp", SendMessageOptions.DontRequireReceiver);
 	}
 
-    //Debug
-    void OnDrawGizmos()
-    {
-        if (ShowGizmos)
-        {
-            Gizmos.DrawWireSphere(transform.position + new Vector3(0, YOffset), interactiveradius);
-        }
-    }
+	MovableObject FindMovableObject()
+	{
+		Collider2D[] closecolliders = getCloseColliders();
+
+		MovableObject closestMovable = null;
+		float AngleToClosestInteractable = Mathf.Infinity;
+
+		for (int i = 0; i < closecolliders.Length; i++)
+		{
+			MovableObject colliderMovable = closecolliders[i].GetComponent<MovableObject>();
+
+			if (colliderMovable == null)
+			{
+				continue;
+			}
+
+			Vector3 directionToInteractable = closecolliders[i].transform.position - transform.position;
+			float angleToInteractable = Vector3.Angle(directionToInteractable, Character.m_MovementModel.GetFacingDirection());
+			if (angleToInteractable < 40)
+			{
+				if (angleToInteractable < AngleToClosestInteractable)
+				{
+					closestMovable = colliderMovable;
+					AngleToClosestInteractable = angleToInteractable;
+				}
+			}
+
+			//Debug.Log(i + ": " + closecolliders[i].name + " - Angle: " + angleToInteractable);
+		}
+		return closestMovable;
+	}
+
+	public void AttackMovableObject()
+	{
+
+	}
+	public void DetatchMovableObject()
+	{
+
+	}
 }
 

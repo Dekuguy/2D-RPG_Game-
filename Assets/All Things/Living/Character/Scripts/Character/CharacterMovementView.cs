@@ -10,6 +10,7 @@ public class CharacterMovementView : BaseMovementView
 	public GameObject PreviewParent;
 	public GameObject ShieldParent;
 	public GameObject LiftedUpObjectParent;
+	public GameObject MovableParent;
 
 	void Awake()
 	{
@@ -25,6 +26,14 @@ public class CharacterMovementView : BaseMovementView
 		UpdateDirection();
 		UpdateHit();
 		UpdateAttack();
+
+		if (Character.m_MovementModel.m_isPushing)
+		{
+			_animator.SetBool("isPushing", true);
+		}else
+		{
+			_animator.SetBool("isPushing", false);
+		}
 	}
 
 
@@ -35,12 +44,19 @@ public class CharacterMovementView : BaseMovementView
 			Vector2 direction = Character.m_MovementModel.GetMovementDirection();
 			Vector2 facingDirection = Character.m_MovementModel.GetFacingDirection();
 
-			if (facingDirection != Vector2.zero)
+			if (!Character.m_MovementModel.isdisabledirection())
 			{
-				_animator.SetFloat("DirectionX", facingDirection.x);
-				_animator.SetFloat("DirectionY", facingDirection.y);
+				if (facingDirection != Vector2.zero && !Character.m_MovementModel.m_isPushing)
+				{
+					_animator.SetFloat("DirectionX", facingDirection.x);
+					_animator.SetFloat("DirectionY", facingDirection.y);
+				}
+				_animator.SetBool("IsMoving", Character.m_MovementModel.isMoving());
 			}
-			_animator.SetBool("IsMoving", Character.m_MovementModel.isMoving());
+			else
+			{
+				_animator.SetBool("IsMoving", false);
+			}
 		}
 		else
 		{

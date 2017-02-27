@@ -6,10 +6,17 @@ public class CharacterInteractionModel : MonoBehaviour
 {
 
 	private GameObject LiftedUpOBJ;
+	private GameObject MovableOBJ;
 
 
 	public void OnInteract()
 	{
+		if(MovableOBJ != null)
+		{
+			DetatchMovableObject();
+			return;
+		}
+
 		if (LiftedUpOBJ != null)
 		{
 			LiftedUpOBJ.GetComponent<InteractablePickUp>().Throw(Character.m_MovementModel.GetFacingDirection());
@@ -23,6 +30,15 @@ public class CharacterInteractionModel : MonoBehaviour
 		{
 			return;
 		}
+		if (!usableInteractable.enabled)
+		{
+			return;
+		}
+		if (!usableInteractable.isActiveAndEnabled)
+		{
+			return;
+		}
+
 		//Debug.Log("Found Interactable! " + usableInteractable.name);
 		usableInteractable.OnInteract();
 	}
@@ -87,49 +103,33 @@ public class CharacterInteractionModel : MonoBehaviour
 			col.enabled = false;
 		}
 
-		Debug.Log("", obj);
 		obj.SendMessage("PickUp", SendMessageOptions.DontRequireReceiver);
 	}
 
-	MovableObject FindMovableObject()
+	public void AttatchMovableObject(GameObject obj)
 	{
-		Collider2D[] closecolliders = getCloseColliders();
+		Character.m_MovementModel.DisableSpecificDirectionMovement(new Vector2(Character.m_MovementModel.GetFacingDirection().y, -Character.m_MovementModel.GetFacingDirection().x));
+		Character.m_MovementModel.DisableSpecificDirectionMovement(new Vector2(-Character.m_MovementModel.GetFacingDirection().y, Character.m_MovementModel.GetFacingDirection().x));
 
-		MovableObject closestMovable = null;
-		float AngleToClosestInteractable = Mathf.Infinity;
+		Character.m_MovementModel.m_isPushing = true;
 
-		for (int i = 0; i < closecolliders.Length; i++)
-		{
-			MovableObject colliderMovable = closecolliders[i].GetComponent<MovableObject>();
+		DataBase.AllVariables.baseVariables.character_Speed = 0.5f;
 
-			if (colliderMovable == null)
-			{
-				continue;
-			}
+		MovableOBJ = obj;
 
-			Vector3 directionToInteractable = closecolliders[i].transform.position - transform.position;
-			float angleToInteractable = Vector3.Angle(directionToInteractable, Character.m_MovementModel.GetFacingDirection());
-			if (angleToInteractable < 40)
-			{
-				if (angleToInteractable < AngleToClosestInteractable)
-				{
-					closestMovable = colliderMovable;
-					AngleToClosestInteractable = angleToInteractable;
-				}
-			}
-
-			//Debug.Log(i + ": " + closecolliders[i].name + " - Angle: " + angleToInteractable);
-		}
-		return closestMovable;
-	}
-
-	public void AttackMovableObject()
-	{
-
+		MovableOBJ.layer = LayerMask.NameToLayer("DontCollideWithPlayer");
 	}
 	public void DetatchMovableObject()
 	{
+		MovableOBJ.layer = LayerMask.NameToLayer("Default");
 
+		MovableOBJ.SendMessage("DetachParent", SendMessageOptions.DontRequireReceiver);
+
+		DataBase.AllVariables.baseVariables.character_Speed = 1;
+		Character.m_MovementModel.m_isPushing = false;
+		Character.m_MovementModel.EnableDirectionMovementComplete();
+
+		MovableOBJ = null;
 	}
 }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AnimationTrigger : MonoBehaviour
 {
-
 	[SerializeField]
 	public GameObject prefab;
 
@@ -13,9 +12,16 @@ public class AnimationTrigger : MonoBehaviour
 	[SerializeField]
 	private bool SimpleMovement = false;
 	[SerializeField]
-	private float Speed = 1;
+	private bool isFadingInAndOut = false;
+	[SerializeField]
+	public float Speed = 1;
 	[SerializeField]
 	private Vector3 Offset;
+
+	[Space]
+
+	[SerializeField]
+	private bool LerpToStartPosition;
 
 	[Space]
 
@@ -31,11 +37,9 @@ public class AnimationTrigger : MonoBehaviour
 	private bool PointisTriggered = false;
 	private bool isGoing = false;
 
-	void Start()
+	private void Awake()
 	{
 		points = GetComponent<AnimationPoints>().Points;
-
-		//TriggerAnimation(TriggerID);
 	}
 
 	public void TriggerAnimation(int ID)
@@ -44,7 +48,20 @@ public class AnimationTrigger : MonoBehaviour
 		{
 			GeneralAnimationState.Animationstatus = 0;
 
-			prefab.transform.position = points[0].transform.position + Offset;
+			if (LerpToStartPosition){
+				GameObject[] temp = new GameObject[points.Length+1];
+				temp[0] = new GameObject();
+				temp[0].AddComponent<PointEvents_Base>();
+				for(int i = 1; i < temp.Length; i++)
+				{
+					temp[i] = points[i-1];
+				}
+				points = temp;
+			}else{
+				prefab.transform.position = points[0].transform.position;
+			}
+			
+
 			isAnimating = true;
 			currentPoint = 0;
 
@@ -60,7 +77,7 @@ public class AnimationTrigger : MonoBehaviour
 
 
 	void Update()
-	{ 
+	{
 		if (isAnimating)
 		{
 			if (!PointisTriggered && !isGoing)
@@ -103,7 +120,10 @@ public class AnimationTrigger : MonoBehaviour
 				{
 					isAnimating = false;
 
-					GeneralAnimationState.Animationstatus = 0;
+					if(prefab.tag == "Player")
+					{
+						Character.m_MovementModel.EnableDirectionMovementComplete();
+					}
 
 					if (!SimpleMovement)
 						prefab.GetComponent<BaseMovementModel>().SetAnimation(false);
@@ -121,18 +141,17 @@ public class AnimationTrigger : MonoBehaviour
 
 				if (points[currentPoint].GetComponent<PointEvents_Base>().getAnimationState() <= GeneralAnimationState.Animationstatus)
 				{
-					Debug.Log(points[currentPoint].GetComponent<PointEvents_Base>().getAnimationState() + ", " + GeneralAnimationState.Animationstatus);
 					if (SimpleMovement)
 					{
 						prefab.transform.position += ((Vector3)direction.normalized * Speed * DataBase.AllVariables.baseVariables.base_Speed + Offset) * Time.deltaTime;
 					}
 					else
 					{
-						prefab.GetComponent<BaseMovementModel>().SetDirection(direction);
+						prefab.GetComponent<BaseMovementModel>().SetDirection(direction.normalized * Speed);
 					}
 				}
 
-				if (((Vector2)prefab.transform.position - (Vector2)points[currentPoint].transform.position).magnitude <= distance)
+				if (((Vector2)prefab.transform.position - (Vector2)points[currentPoint].transform.position).magnitude <= distance * Speed)
 				{
 					if (!SimpleMovement)
 						prefab.GetComponent<BaseMovementModel>().SetDirection(Vector2.zero);

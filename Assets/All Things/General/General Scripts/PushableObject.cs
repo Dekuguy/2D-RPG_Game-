@@ -48,7 +48,6 @@ public class PushableObject : MonoBehaviour
     {
         m_PushTime = relativetime * DataBase.AllVariables.baseVariables.base_PushTime * Pushtime;
         m_PushDirection = pushDirection * PushVelocity * DataBase.AllVariables.baseVariables.base_PushVelocity;
-		Debug.Log("Test");
     }
     public void PushCharacterAbs(Vector2 pushDirection, float absolutetime)
     {

@@ -15,6 +15,6 @@ MonoBehaviour:
     Base_Speed: 5
     Base_PushVelocity: 15
     Base_PushTime: 0.1
-    Base_PushTimeout: 0.2
+    Base_PushTimeout: 0.4
     Character_Speed: 1
     Enemy_Speed: 1

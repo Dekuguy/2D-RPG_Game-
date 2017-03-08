@@ -7,8 +7,16 @@ public class CharacterBaseControl : BaseControl {
 
     protected override void SetDirection(Vector2 direction)
     {
-		if(!Character.m_MovementModel.IsInAnimation())
-			Character.m_MovementModel.SetDirection(direction);
+		if (!Character.m_MovementModel.IsInAnimation())
+		{
+			if (Character.m_MovementModel.isPushing())
+			{
+				Character.m_MovementModel.SetSimpleDirection(direction);
+			}else
+			{
+				Character.m_MovementModel.SetDirection(direction);
+			}
+		}
     }
 
     protected void OnAttackPressed()

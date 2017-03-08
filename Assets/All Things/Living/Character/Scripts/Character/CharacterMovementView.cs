@@ -27,7 +27,7 @@ public class CharacterMovementView : BaseMovementView
 		UpdateHit();
 		UpdateAttack();
 
-		if (Character.m_MovementModel.m_isPushing)
+		if (Character.m_MovementModel.isPushing())
 		{
 			_animator.SetBool("isPushing", true);
 		}else
@@ -46,7 +46,7 @@ public class CharacterMovementView : BaseMovementView
 
 			if (!Character.m_MovementModel.isdisabledirection())
 			{
-				if (facingDirection != Vector2.zero && !Character.m_MovementModel.m_isPushing)
+				if (facingDirection != Vector2.zero && !Character.m_MovementModel.isPushing())
 				{
 					_animator.SetFloat("DirectionX", facingDirection.x);
 					_animator.SetFloat("DirectionY", facingDirection.y);

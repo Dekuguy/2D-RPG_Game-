@@ -77,43 +77,49 @@ public class BatKIMovenebt2 : EnemyKIMovement
     }
     void Update()
     {
-        if (Playerdistance() <= Min_Max_Sightradius.x)
-        {
-            isInRange = true;
-        }
-        if (Playerdistance() >= Min_Max_Sightradius.y)
-        {
-            isInRange = false;
-        }
 
-        if (isInRange)
-        {
-            timetoAttck -= Time.deltaTime;
-            if (timetoAttck <= 0)
-            {
-                timetoAttck = Random.Range(Min_Max_RandomAttackTime.x, Min_Max_RandomAttackTime.y) + TimeoutAfterAttack;
-                m_isAttacking = true;
-                if (Random.Range(0, 2) == 0)
-                    flyright = true;
-                else
-                    flyright = false;
-            }
+		if (!GetComponent<BaseMovementModel>().IsInAnimation())
+		{
 
-            if (m_isAttacking)
-            {
-                SetDirection(Attack(Attackslowspeed));
-            }
-            else
-            {
-                float distance = Min_Max_Sightradius.x * ((Mathf.Sin(Time.time*4)/3)+1);
-                float spd = 2 / ((Vector2)transform.position - (Vector2)Player.transform.position).magnitude;
+			if (Playerdistance() <= Min_Max_Sightradius.x)
+			{
+				isInRange = true;
+			}
+			if (Playerdistance() >= Min_Max_Sightradius.y)
+			{
+				isInRange = false;
+			}
 
-                SetDirection(FlyAroundPoint(Player.transform.position, flyright, distance, spd));
-            }
-        }else
-        {
-            SetDirection(Vector2.zero);
-            m_isAttacking = false;
-        }
+			if (isInRange)
+			{
+				timetoAttck -= Time.deltaTime;
+				if (timetoAttck <= 0)
+				{
+					timetoAttck = Random.Range(Min_Max_RandomAttackTime.x, Min_Max_RandomAttackTime.y) + TimeoutAfterAttack;
+					m_isAttacking = true;
+					if (Random.Range(0, 2) == 0)
+						flyright = true;
+					else
+						flyright = false;
+				}
+
+				if (m_isAttacking)
+				{
+					SetDirection(Attack(Attackslowspeed));
+				}
+				else
+				{
+					float distance = Min_Max_Sightradius.x * ((Mathf.Sin(Time.time * 4) / 3) + 1);
+					float spd = 2 / ((Vector2)transform.position - (Vector2)Player.transform.position).magnitude;
+
+					SetDirection(FlyAroundPoint(Player.transform.position, flyright, distance, spd));
+				}
+			}
+			else
+			{
+				SetDirection(Vector2.zero);
+				m_isAttacking = false;
+			}
+		}
     }
 }

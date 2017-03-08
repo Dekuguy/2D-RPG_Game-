@@ -111,7 +111,7 @@ public class CharacterInteractionModel : MonoBehaviour
 		Character.m_MovementModel.DisableSpecificDirectionMovement(new Vector2(Character.m_MovementModel.GetFacingDirection().y, -Character.m_MovementModel.GetFacingDirection().x));
 		Character.m_MovementModel.DisableSpecificDirectionMovement(new Vector2(-Character.m_MovementModel.GetFacingDirection().y, Character.m_MovementModel.GetFacingDirection().x));
 
-		Character.m_MovementModel.m_isPushing = true;
+		Character.m_MovementModel.setisPushing(true);
 
 		DataBase.AllVariables.baseVariables.character_Speed = 0.5f;
 
@@ -126,7 +126,7 @@ public class CharacterInteractionModel : MonoBehaviour
 		MovableOBJ.SendMessage("DetachParent", SendMessageOptions.DontRequireReceiver);
 
 		DataBase.AllVariables.baseVariables.character_Speed = 1;
-		Character.m_MovementModel.m_isPushing = false;
+		Character.m_MovementModel.setisPushing(false);
 		Character.m_MovementModel.EnableDirectionMovementComplete();
 
 		MovableOBJ = null;

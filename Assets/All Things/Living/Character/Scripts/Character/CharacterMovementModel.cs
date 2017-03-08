@@ -7,7 +7,7 @@ public class CharacterMovementModel : BaseMovementModel
 {
 	private bool m_isAttacking;
 	private bool m_canAttack;
-	public bool m_isPushing;
+	private bool m_isPushing;
 
 	private ItemType m_EquippedWeapon = ItemType.None;
 	private ItemType m_EquippedShield = ItemType.None;
@@ -43,19 +43,16 @@ public class CharacterMovementModel : BaseMovementModel
 
 	protected override void UpdateMovement()
 	{
+		Vector2 movement = Vector2.zero;
 
 		if (!m_isFrozen || m_canMove)
 		{
-			if (m_MovementDirection != Vector2.zero)
-			{
-				m_MovementDirection.Normalize();
-			}
 
 			if (isPushableObject)
 			{
 				if (GetComponent<PushableObject>().isBeingPushed())
 				{
-					m_Body.velocity = GetComponent<PushableObject>().getPushDirection();
+					movement = GetComponent<PushableObject>().getPushDirection();
 				}
 			}
 
@@ -64,29 +61,17 @@ public class CharacterMovementModel : BaseMovementModel
 				if (isPushableObject)
 				{
 					if (!GetComponent<PushableObject>().isBeingPushedTimeOut() && !isAttacking())
-						m_Body.velocity = m_MovementDirection * DataBase.AllVariables.baseVariables.character_Speed;
-					else
-						m_Body.velocity = Vector2.zero;
+						movement = m_MovementDirection * DataBase.AllVariables.baseVariables.character_Speed;
 				}
 				else
 				{
 					if (!isAttacking())
-						m_Body.velocity = m_MovementDirection * DataBase.AllVariables.baseVariables.character_Speed;
-					else
-						m_Body.velocity = Vector2.zero;
+						movement = m_MovementDirection * DataBase.AllVariables.baseVariables.character_Speed;
 				}
 			}
-			else
-			{
-				m_Body.velocity = Vector2.zero;
-
-			}
 		}
 
-		else
-		{
-			m_Body.velocity = Vector2.zero;
-		}
+		m_Body.velocity = movement;
 	}
 
 	public override Vector2 GetFacingDirection()
@@ -132,6 +117,10 @@ public class CharacterMovementModel : BaseMovementModel
 			}
 		}
 		return false;
+	}
+	public bool isPushing()
+	{
+		return m_isPushing;
 	}
 
 	public bool isAttacking()
@@ -185,6 +174,20 @@ public class CharacterMovementModel : BaseMovementModel
 	{
 		if (!m_isFrozen)
 		{
+			m_MovementDirection = direction;
+			if(direction != Vector2.zero)
+			{
+				m_FacingDirection = direction;
+			}
+		}else
+		{
+			m_MovementDirection = Vector2.zero;
+		}
+	}
+	public void SetSimpleDirection(Vector2 direction)
+	{
+		if (!m_isFrozen)
+		{
 			Vector2 movingdirection = Vector2.zero;
 			if (direction.x > 0)
 				movingdirection.x = 1;
@@ -197,15 +200,10 @@ public class CharacterMovementModel : BaseMovementModel
 
 			m_MovementDirection = movingdirection;
 
-			if(movingdirection != Vector2.zero)
+			if (movingdirection != Vector2.zero)
 			{
 				m_FacingDirection = movingdirection;
 			}
-		}
-
-		else
-		{
-			m_MovementDirection = Vector2.zero;
 		}
 	}
 	public override void SetFacingDirection(Vector2 direction)
@@ -221,6 +219,20 @@ public class CharacterMovementModel : BaseMovementModel
 			movingdirection.y = -1;
 
 		m_FacingDirection = movingdirection;
+	}
+	public void setisPushing(bool push)
+	{
+		if (!m_isFrozen)
+		{
+			if (!m_isAttacking)
+			{
+				if (!m_isInAnimation)
+				{
+					m_isPushing = true;
+				}
+			}
+		}
+		m_isPushing = false;
 	}
 
 	public void DisableSpecificDirectionMovement(Vector2 direction)

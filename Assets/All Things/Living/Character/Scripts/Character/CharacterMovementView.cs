@@ -33,7 +33,6 @@ public class CharacterMovementView : BaseMovementView
 			_animator.SetBool("isPushing", true);
 		}else
 		{
-			Debug.Log("Ja");
 			_animator.SetBool("isPushing", false);
 		}
 	}

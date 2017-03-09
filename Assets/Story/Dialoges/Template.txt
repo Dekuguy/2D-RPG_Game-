@@ -4,6 +4,6 @@ Das ist ein Beispiel, wo man auch eifach nur
 wenig schreiben
 kann.
 <new>
-Man kann auch <size=60>Grosse</size> oder <size=20>kleine</size> Text mit <color=red>unterschiedlichen</color> <color=green>Farben</color> zeigen
+Blub Man kann auch <size=60>Grosse</size> oder <size=20>kleine</size> Text mit <color=red>unterschiedlichen</color> <color=green>Farben</color> zeigen
 <new>
 Wenn ihr mehr efahtren wollt: https://docs.unity3d.com/Manual/StyledText.html

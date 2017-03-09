@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PointEvents_ShowDialogeBox : PointEvents_Base {
 	[SerializeField]
+	private bool Freeze;
+	[SerializeField]
 	private string text;
 	[SerializeField]
 	private TextAsset asset;
@@ -11,9 +13,9 @@ public class PointEvents_ShowDialogeBox : PointEvents_Base {
 	public override void Triggered()
 	{
 		if (text != "")
-			DialogeBox.Show(text, false);
+			DialogeBox.Show(text, false, Freeze);
 		else
-			DialogeBox.Show(asset.text, true);
+			DialogeBox.Show(asset.text, true, Freeze);
 		base.Triggered();	
 	}
 
@@ -26,7 +28,7 @@ public class PointEvents_ShowDialogeBox : PointEvents_Base {
 	{
 		if (gotTriggered)
 		{
-			if (!DialogeBox.ShowBox())
+			if (!DialogeBox.isShowingBox())
 			{
 				finished = true;
 			}

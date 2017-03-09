@@ -29,7 +29,7 @@ public class CharacterBaseControl : BaseControl {
 
     protected void OnInteractPressed()
     {
-		if(!Character.m_MovementModel.IsInAnimation())
+		if(!Character.m_MovementModel.IsInAnimation() && !DialogeBox.isShowingBox())
 			Character.m_InteractionModel.OnInteract();
     }
 }

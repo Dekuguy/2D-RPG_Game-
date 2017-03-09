@@ -18,6 +18,7 @@ public class PointEvents_Base : MonoBehaviour {
 		return MainEvent;
 	}
 
+
 	protected bool finished = true;
 	public bool isFinished()
 	{

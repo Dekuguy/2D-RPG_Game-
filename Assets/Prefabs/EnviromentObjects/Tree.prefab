@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1981145585756340}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.06, y: 0.67, z: 0}
+  m_LocalPosition: {x: -13.178489, y: -2.1988673, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4561561096263716}
@@ -122,15 +122,18 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -1.7104383, y: -0.30854952}
+    - - {x: -1.4642992, y: -0.82363224}
+      - {x: -1.7685423, y: -0.55064845}
       - {x: -0.63184357, y: 0.40212983}
       - {x: 0.62598705, y: 0.40128797}
-      - {x: 1.6409773, y: -0.42868823}
-      - {x: 1.6188658, y: -1.512002}
+      - {x: 1.7668686, y: -0.64173555}
+      - {x: 1.244875, y: -0.97451544}
+      - {x: 1.618866, y: -1.6572614}
       - {x: 0.5342791, y: -1.789619}
-      - {x: -0.015202045, y: -2.4344945}
-      - {x: -0.6458492, y: -1.6447091}
-      - {x: -1.8293142, y: -1.5284716}
+      - {x: 0.042901993, y: -2.4538627}
+      - {x: -0.67373085, y: -2.085547}
+      - {x: -0.5199585, y: -1.5091338}
+      - {x: -1.9939423, y: -1.4316318}
 --- !u!114 &114009507778266962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bottomOffset: 2
-  ShowGizmos: 0
+  ShowGizmos: 1
 --- !u!212 &212726501158255116
 SpriteRenderer:
   m_ObjectHideFlags: 1

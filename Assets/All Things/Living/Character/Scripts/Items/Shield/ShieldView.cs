@@ -63,8 +63,61 @@ public class ShieldView : MonoBehaviour {
 
 		}
     }
+	public void SetFacingDirection(Vector2 direction)
+	{
 
-    public enum FacingDirection
+		if (direction == new Vector2(0, -1))
+		{
+			_renderer.sprite = _facingSprites.front;
+			_renderer.flipX = false;
+			_renderer.sortingOrder = 150;
+		}
+		if (direction == new Vector2(0, 1))
+		{
+			_renderer.sprite = _facingSprites.back;
+			_renderer.flipX = false;
+			_renderer.sortingOrder = 50;
+		}
+		if (direction == new Vector2(-1, 0))
+		{
+			_renderer.sprite = _facingSprites.side;
+			_renderer.flipX = true;
+			_renderer.sortingOrder = 150;
+		}
+		if (direction == new Vector2(1, 0))
+		{
+			_renderer.sprite = _facingSprites.side;
+			_renderer.flipX = false;
+			_renderer.sortingOrder = 150;
+		}
+		if (direction == new Vector2(-1, -1))
+		{
+			_renderer.sprite = _facingSprites.halfside_front;
+			_renderer.flipX = true;
+			_renderer.sortingOrder = 150;
+		}
+		if (direction == new Vector2(1, -1))
+		{
+			_renderer.sprite = _facingSprites.halfside_front;
+			_renderer.flipX = false;
+			_renderer.sortingOrder = 150;
+		}
+		if (direction == new Vector2(-1, 1))
+		{
+			_renderer.sprite = _facingSprites.halfside_back;
+			_renderer.flipX = false;
+			_renderer.sortingOrder = 50;
+		}
+		if (direction == new Vector2(1, 1))
+		{
+			_renderer.sprite = _facingSprites.halfside_back;
+			_renderer.flipX = true;
+			_renderer.sortingOrder = 50;
+		}
+
+	}
+
+	public enum FacingDirection
     {
         left,
         left_front,

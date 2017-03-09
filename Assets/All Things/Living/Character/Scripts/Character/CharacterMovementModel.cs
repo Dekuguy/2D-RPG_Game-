@@ -102,15 +102,16 @@ public class CharacterMovementModel : BaseMovementModel
 	{
 		foreach (Vector2 d in disabledDirections)
 		{
-			if(d.x != 0) {
-				if(d.x == m_FacingDirection.x)
+			if (d.x != 0)
+			{
+				if (d.x == m_FacingDirection.x)
 				{
-					Debug.Log("Test");
 					return true;
 				}
-			}else if(d.y != 0)
+			}
+			else if (d.y != 0)
 			{
-				if(d.y == m_FacingDirection.y)
+				if (d.y == m_FacingDirection.y)
 				{
 					return true;
 				}
@@ -175,11 +176,12 @@ public class CharacterMovementModel : BaseMovementModel
 		if (!m_isFrozen)
 		{
 			m_MovementDirection = direction;
-			if(direction != Vector2.zero)
+			if (direction != Vector2.zero)
 			{
 				m_FacingDirection = direction;
 			}
-		}else
+		}
+		else
 		{
 			m_MovementDirection = Vector2.zero;
 		}
@@ -222,17 +224,14 @@ public class CharacterMovementModel : BaseMovementModel
 	}
 	public void setisPushing(bool push)
 	{
-		if (!m_isFrozen)
+
+		if (!m_isFrozen && !m_isInAnimation && !m_isAttacking)
 		{
-			if (!m_isAttacking)
-			{
-				if (!m_isInAnimation)
-				{
-					m_isPushing = true;
-				}
-			}
+			m_isPushing = push;
+		}else
+		{
+			m_isPushing = false;
 		}
-		m_isPushing = false;
 	}
 
 	public void DisableSpecificDirectionMovement(Vector2 direction)

@@ -29,9 +29,11 @@ public class CharacterMovementView : BaseMovementView
 
 		if (Character.m_MovementModel.isPushing())
 		{
+			
 			_animator.SetBool("isPushing", true);
 		}else
 		{
+			Debug.Log("Ja");
 			_animator.SetBool("isPushing", false);
 		}
 	}
@@ -50,6 +52,8 @@ public class CharacterMovementView : BaseMovementView
 				{
 					_animator.SetFloat("DirectionX", facingDirection.x);
 					_animator.SetFloat("DirectionY", facingDirection.y);
+
+					SetWeaponDirection(facingDirection);
 				}
 				_animator.SetBool("IsMoving", Character.m_MovementModel.isMoving());
 			}
@@ -111,6 +115,14 @@ public class CharacterMovementView : BaseMovementView
 		WorldFunktions.SetObjectSpriteLayerIndex(WeaponParent, sortingOrder);
 	}
 	public void SetWeaponDirection(ShieldView.FacingDirection direction)
+	{
+		ShieldView[] children = GetComponentsInChildren<ShieldView>();
+		foreach (ShieldView t in children)
+		{
+			t.SetFacingDirection(direction);
+		}
+	}
+	public void SetWeaponDirection(Vector2 direction)
 	{
 		ShieldView[] children = GetComponentsInChildren<ShieldView>();
 		foreach (ShieldView t in children)

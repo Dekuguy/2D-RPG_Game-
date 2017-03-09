@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4388868414658494}
   - component: {fileID: 61901947953502152}
   - component: {fileID: 114976471149607004}
-  - component: {fileID: 50490608625144754}
+  - component: {fileID: 50834484097495504}
+  - component: {fileID: 114068183965540890}
   m_Layer: 0
   m_Name: Sign
   m_TagString: Untagged
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1715436713985728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.63, y: -7.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4677970919413228}
@@ -72,7 +73,7 @@ Transform:
   m_Father: {fileID: 4388868414658494}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50490608625144754
+--- !u!50 &50834484097495504
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -105,7 +106,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.93, y: 1}
+--- !u!114 &114068183965540890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715436713985728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883c63281ccac944c88a20196e5ced68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114976471149607004
 MonoBehaviour:
   m_ObjectHideFlags: 1

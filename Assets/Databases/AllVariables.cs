@@ -29,6 +29,8 @@ public class Variables
     [Header("Character Variables")]
     [SerializeField]
     private float Character_Speed = 1;
+	[SerializeField]
+	private int Character_Max_Lives;
 
     //Enemys
     [Header("Enemys Variables")]
@@ -52,6 +54,8 @@ public class Variables
     //Character Variables
     [HideInInspector]
     public float character_Speed { get { return Character_Speed * Base_Speed; } set { Character_Speed = value; } }
+	[HideInInspector]
+	public int character_MaxLives { get { return Character_Max_Lives; } }
 
     //EnemyVariables
     [HideInInspector]

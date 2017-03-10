@@ -17,4 +17,5 @@ MonoBehaviour:
     Base_PushTime: 0.1
     Base_PushTimeout: 0.4
     Character_Speed: 1
+    Character_Max_Lives: 16
     Enemy_Speed: 1

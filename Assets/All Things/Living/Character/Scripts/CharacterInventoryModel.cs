@@ -10,7 +10,6 @@ public class CharacterInventoryModel : MonoBehaviour {
     {
         AddItem(itemType, 1);
     }
-
     public void AddItem(ItemType itemType, int amount)
     {
         if (m_Items.ContainsKey(itemType) == true)
@@ -37,6 +36,29 @@ public class CharacterInventoryModel : MonoBehaviour {
             }
         }
     }
+	public void AddItemWithoutAnimation(ItemType itemType, int amount)
+	{
+		if (m_Items.ContainsKey(itemType) == true)
+		{
+			m_Items[itemType] += amount;
+		}
+		else
+		{
+			m_Items.Add(itemType, amount);
+		}
+
+		if (amount > 0)
+		{
+			ItemData itemdata = DataBase.Item.FindItem(itemType);
+			if (itemdata != null)
+			{
+				if (itemdata.EquipType == ItemData.EquipPosition.SwordHand)
+					Character.m_MovementModel.equipWeapon(itemType);
+				if (itemdata.EquipType == ItemData.EquipPosition.ShieldHand)
+					Character.m_MovementModel.equipShield(itemType);
+			}
+		}
+	}
 
 	public int getItemAmount(ItemType item)
 	{

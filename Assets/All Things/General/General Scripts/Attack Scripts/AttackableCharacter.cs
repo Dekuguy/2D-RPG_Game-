@@ -29,5 +29,8 @@ public class AttackableCharacter : AttackableBase {
 			lives = DataBase.AllVariables.baseVariables.character_MaxLives;
 		}
 	}
-
+	public void SetHearts(int amount)
+	{
+		lives = amount;
+	}
 }

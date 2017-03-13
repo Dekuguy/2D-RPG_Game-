@@ -153,7 +153,7 @@ Prefab:
     - target: {fileID: 114146723004951984, guid: 2499c887b510bf34881ecae0a7ec5ebd,
         type: 2}
       propertyPath: ShowGizmos
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114146723004951984, guid: 2499c887b510bf34881ecae0a7ec5ebd,
         type: 2}
@@ -3461,15 +3461,34 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -0.37014443, y: -0.24383664}
+    - - {x: -0.2984626, y: -0.20287561}
       - {x: 0.0059984922, y: -0.19824457}
-      - {x: 0.3719132, y: -0.27013493}
-      - {x: 0.4291852, y: -0.35082078}
-      - {x: 0.3298489, y: -0.5210879}
-      - {x: 0.1920799, y: -0.61193776}
+      - {x: 0.3411929, y: -0.21381354}
+      - {x: 0.4189456, y: -0.36618185}
+      - {x: 0.2888875, y: -0.52108836}
+      - {x: 0.120397866, y: -0.61705756}
       - {x: -0.2398709, y: -0.6230624}
-      - {x: -0.38875735, y: -0.48654866}
-      - {x: -0.4411819, y: -0.35681915}
+      - {x: -0.34779617, y: -0.55311036}
+      - {x: -0.3848604, y: -0.36705947}
+--- !u!114 &1943954435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943954421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31986c032d749644fb1f7684cc5cb3da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0
+  Lives: 4
+  Rubins: 100
+  startupItems:
+  - type: 100
+    amount: 1
+  - type: 200
+    amount: 1
 --- !u!1 &1961748420
 GameObject:
   m_ObjectHideFlags: 0

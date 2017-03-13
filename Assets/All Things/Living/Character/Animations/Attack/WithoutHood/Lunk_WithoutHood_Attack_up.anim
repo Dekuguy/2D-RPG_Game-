@@ -686,6 +686,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: SetWeaponDirection
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 3
+    messageOptions: 0
   - time: 0.083333336
     functionName: SetWeaponDirection
     data: 
@@ -698,7 +705,7 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 5
+    intParameter: 4
     messageOptions: 0
   - time: 0.25
     functionName: SetSortingOrderOfWeapon
@@ -706,6 +713,13 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 200
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: SetSortingOrderOfWeapon
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 50
     messageOptions: 0
   - time: 0.41666666
     functionName: SetWeaponDirection

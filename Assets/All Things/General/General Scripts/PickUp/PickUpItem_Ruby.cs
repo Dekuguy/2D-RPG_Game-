@@ -24,6 +24,9 @@ public class PickUpItem_Ruby : PickUpItem {
 		{
 			Character.m_InventoryModel.AddItem(ItemType.Ruby, RubyAmount);
 
+			if(GetComponent<Collider2D>())
+				GetComponent<Collider2D>().enabled = false;
+
 			GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
 
 			child = transform.GetChild(0).gameObject;

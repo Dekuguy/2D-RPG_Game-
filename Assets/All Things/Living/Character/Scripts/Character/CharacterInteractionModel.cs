@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class CharacterInteractionModel : MonoBehaviour
 {
+	[SerializeField]
+	private Vector2 Interactionradius;
+	[SerializeField]
+	private Vector2 InteractionOffset;
+	[SerializeField]
+	private bool ShowGizmos;
 
 	private GameObject LiftedUpOBJ;
 	private GameObject MovableOBJ;
@@ -45,9 +51,7 @@ public class CharacterInteractionModel : MonoBehaviour
 
 	public Collider2D[] getCloseColliders()
 	{
-		BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-
-		return Physics2D.OverlapAreaAll((Vector2)transform.position + boxCollider.offset + boxCollider.size * 0.6f, (Vector2)transform.position + boxCollider.offset - boxCollider.size * 0.6f);
+		return Physics2D.OverlapAreaAll((Vector2)transform.position + InteractionOffset + Interactionradius * 0.5f, (Vector2)transform.position + InteractionOffset - Interactionradius * 0.5f);
 	}
 
 	InteractableBase FindUsableInteractable()
@@ -130,6 +134,14 @@ public class CharacterInteractionModel : MonoBehaviour
 		Character.m_MovementModel.EnableDirectionMovementComplete();
 
 		MovableOBJ = null;
+	}
+
+	private void OnDrawGizmos()
+	{
+		if (ShowGizmos)
+		{
+			Gizmos.DrawWireCube((Vector3)InteractionOffset + transform.position, (Vector3)Interactionradius);
+		}
 	}
 }
 

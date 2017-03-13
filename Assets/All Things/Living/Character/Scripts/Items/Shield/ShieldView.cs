@@ -21,44 +21,28 @@ public class ShieldView : MonoBehaviour {
         switch (direction)
         {
             case FacingDirection.front:
-                _renderer.sprite = _facingSprites.front;
-                _renderer.flipX = false;
-                _renderer.sortingOrder = 150;
+				SetFacingDirection(new Vector2(0, -1));
                 break;
             case FacingDirection.back:
-                _renderer.sprite = _facingSprites.back;
-                _renderer.flipX = false;
-                _renderer.sortingOrder = 50;
-                break;
+				SetFacingDirection(new Vector2(0, 1));
+				break;
             case FacingDirection.left:
-                _renderer.sprite = _facingSprites.side;
-                _renderer.flipX = true;
-                _renderer.sortingOrder = 150;
-                break;
+				SetFacingDirection(new Vector2(-1, 0));
+				break;
             case FacingDirection.right:
-                _renderer.sprite = _facingSprites.side;
-                _renderer.flipX = false;
-                _renderer.sortingOrder = 150;
-                break;
+				SetFacingDirection(new Vector2(1, 0));
+				break;
 			case FacingDirection.left_front:
-				_renderer.sprite = _facingSprites.halfside_front;
-				_renderer.flipX = true;
-				_renderer.sortingOrder = 150;
+				SetFacingDirection(new Vector2(-1, -1));
 				break;
 			case FacingDirection.right_front:
-				_renderer.sprite = _facingSprites.halfside_front;
-				_renderer.flipX = false;
-				_renderer.sortingOrder = 150;
+				SetFacingDirection(new Vector2(1, -1));
 				break;
 			case FacingDirection.back_left:
-				_renderer.sprite = _facingSprites.halfside_back;
-				_renderer.flipX = false;
-				_renderer.sortingOrder = 50;
+				SetFacingDirection(new Vector2(-1, 1));
 				break;
 			case FacingDirection.back_right:
-				_renderer.sprite = _facingSprites.halfside_back;
-				_renderer.flipX = true;
-				_renderer.sortingOrder = 50;
+				SetFacingDirection(new Vector2(1, 1));
 				break;
 
 		}
@@ -80,37 +64,37 @@ public class ShieldView : MonoBehaviour {
 		}
 		if (direction == new Vector2(-1, 0))
 		{
-			_renderer.sprite = _facingSprites.side;
+			_renderer.sprite = _facingSprites.halfside_back;
 			_renderer.flipX = true;
-			_renderer.sortingOrder = 150;
+			_renderer.sortingOrder = 50;
 		}
 		if (direction == new Vector2(1, 0))
-		{
-			_renderer.sprite = _facingSprites.side;
-			_renderer.flipX = false;
-			_renderer.sortingOrder = 150;
-		}
-		if (direction == new Vector2(-1, -1))
-		{
-			_renderer.sprite = _facingSprites.halfside_front;
-			_renderer.flipX = true;
-			_renderer.sortingOrder = 150;
-		}
-		if (direction == new Vector2(1, -1))
-		{
-			_renderer.sprite = _facingSprites.halfside_front;
-			_renderer.flipX = false;
-			_renderer.sortingOrder = 150;
-		}
-		if (direction == new Vector2(-1, 1))
 		{
 			_renderer.sprite = _facingSprites.halfside_back;
 			_renderer.flipX = false;
 			_renderer.sortingOrder = 50;
 		}
-		if (direction == new Vector2(1, 1))
+		if (direction == new Vector2(-1, -1))
 		{
 			_renderer.sprite = _facingSprites.halfside_back;
+			_renderer.flipX = true;
+			_renderer.sortingOrder = 50;
+		}
+		if (direction == new Vector2(1, -1))
+		{
+			_renderer.sprite = _facingSprites.halfside_back;
+			_renderer.flipX = false;
+			_renderer.sortingOrder = 50;
+		}
+		if (direction == new Vector2(-1, 1))
+		{
+			_renderer.sprite = _facingSprites.back;
+			_renderer.flipX = false;
+			_renderer.sortingOrder = 50;
+		}
+		if (direction == new Vector2(1, 1))
+		{
+			_renderer.sprite = _facingSprites.back;
 			_renderer.flipX = true;
 			_renderer.sortingOrder = 50;
 		}

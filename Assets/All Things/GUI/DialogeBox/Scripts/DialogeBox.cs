@@ -400,14 +400,13 @@ public class DialogeBox : MonoBehaviour
 
 			if (Input.GetButtonDown("Interact"))
 			{
-				Debug.Log(firsttime);
 				if (!firsttime || TextBlocks[TextBlockCount].hasFinished())
 				{
 					if (TextBlocks[TextBlockCount].hasFinished())
 					{
 						TextBlocks[TextBlockCount].Reset();
 						TextBlockCount++;
-						NextIcon.SetActive(false);
+						NextIcon.SetActive(true);
 
 						if (TextBlockCount >= TextBlocks.Length)
 						{
@@ -417,6 +416,7 @@ public class DialogeBox : MonoBehaviour
 					else
 					{
 						TextBlocks[TextBlockCount].ShowAll();
+						NextIcon.SetActive(true);
 					}
 				}
 				firsttime = false;

@@ -41,7 +41,7 @@ public class InteractablePickUp : InteractableBase
 			col.enabled = true;
 		}
 		col.isTrigger = true;
-		this.gameObject.layer = LayerMask.NameToLayer("DontCollideWithPlayer");
+		this.gameObject.layer = LayerMask.NameToLayer("DontCollideWithItemsAndPlayer");
 
 		this.startposition = this.transform.position;
 		this.direction = direction;

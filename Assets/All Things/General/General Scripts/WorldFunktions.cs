@@ -9,7 +9,11 @@ public class WorldFunktions
 	{
 		foreach (Base Livingthings in GameObject.FindObjectsOfType<Base>())
 		{
-			Livingthings.GetComponent<BaseMovementModel>().SetFrozen(freezing);
+			if(Livingthings.GetComponent<BaseMovementModel>())
+				Livingthings.GetComponent<BaseMovementModel>().SetFrozen(freezing);
+			if (Livingthings.GetComponent<Base_SimpleMovement>())
+				Livingthings.GetComponent<Base_SimpleMovement>().SetFrozen(freezing);
+
 		}
 	}
 

@@ -9,7 +9,9 @@ public class FadeManager : MonoBehaviour
 	[SerializeField]
 	private Image CanvasImage;
 	[SerializeField]
-	private Color color;
+	private Color color = Color.black;
+
+	private Color LerpColor;
 
 	private bool isFading;
 	private float fadenumber;
@@ -20,9 +22,22 @@ public class FadeManager : MonoBehaviour
 
 
 	private static FadeManager FadeInstance;
-	public static void Fade(float target, float duration)
+
+	public static void Fade(float targetalpha, float duration)
 	{
-		FadeInstance.FadeLocal(target, duration);
+		FadeInstance.FadeLocal(targetalpha, duration);
+	}
+	public static void SetColor(Color color)
+	{
+		FadeInstance.SetColorLocal(color);
+	}
+	public static Color GetColor()
+	{
+		return FadeInstance.GetColorLocal();
+	}
+	public static void SetStandartColor()
+	{
+		FadeInstance.SetStandartColorLocal();
 	}
 
 	public void FadeLocal(float target, float duration)
@@ -31,12 +46,25 @@ public class FadeManager : MonoBehaviour
 		fadingduration = duration;
 		isFading = true;
 	}
+	public void SetColorLocal(Color color)
+	{
+		LerpColor = color;
+	}
+	public Color GetColorLocal()
+	{
+		return LerpColor;
+	}
+	public void SetStandartColorLocal()
+	{
+		LerpColor = color;
+	}
 
 
 	private void Start()
 	{
 		CanvasImage.color = new Color(0, 0, 0, 0);
 		currenttime = 0;
+		LerpColor = color;
 
 		FadeInstance = this;
 	}
@@ -62,6 +90,6 @@ public class FadeManager : MonoBehaviour
 				}
 			}
 		}
-		CanvasImage.color = Color.Lerp(new Color(0, 0, 0, 0), color, currenttime);
+		CanvasImage.color = Color.Lerp(new Color(0, 0, 0, 0), LerpColor, currenttime);
 	}
 }

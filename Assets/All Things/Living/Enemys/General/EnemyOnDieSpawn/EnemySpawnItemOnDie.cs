@@ -32,6 +32,11 @@ public class EnemySpawnItemOnDie : MonoBehaviour {
 		quitApp = true;
 	}
 
+	private void OnLevelWasLoaded(int level)
+	{
+		quitApp = true;
+	}
+
 	void SpawnItem()
 	{
 		Spawn();

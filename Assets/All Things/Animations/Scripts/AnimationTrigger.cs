@@ -120,7 +120,7 @@ public class AnimationTrigger : MonoBehaviour
 				{
 					isAnimating = false;
 
-					if(prefab.tag == "Player")
+					if (prefab.tag == "Player")
 					{
 						Character.m_MovementModel.EnableDirectionMovementComplete();
 					}
@@ -137,28 +137,37 @@ public class AnimationTrigger : MonoBehaviour
 
 			if (isGoing)
 			{
-				Vector2 direction = points[currentPoint].transform.position - prefab.transform.position;
-
-				if (points[currentPoint].GetComponent<PointEvents_Base>().getAnimationState() <= GeneralAnimationState.Animationstatus)
+				bool canGo = true;
+				if (prefab.GetComponent<Base_SimpleMovement>())
 				{
-					if (SimpleMovement)
-					{
-						prefab.transform.position += ((Vector3)direction.normalized * Speed * DataBase.AllVariables.baseVariables.base_Speed + Offset) * Time.deltaTime;
-					}
-					else
-					{
-						prefab.GetComponent<BaseMovementModel>().SetDirection(direction.normalized * Speed);
-					}
+					canGo = !prefab.GetComponent<Base_SimpleMovement>().isFrozen();
 				}
 
-				if (((Vector2)prefab.transform.position - (Vector2)points[currentPoint].transform.position).magnitude <= distance * Speed)
+				if (canGo)
 				{
-					if (!SimpleMovement)
-						prefab.GetComponent<BaseMovementModel>().SetDirection(Vector2.zero);
+					Vector2 direction = points[currentPoint].transform.position - prefab.transform.position;
 
 					if (points[currentPoint].GetComponent<PointEvents_Base>().getAnimationState() <= GeneralAnimationState.Animationstatus)
 					{
-						isGoing = false;
+						if (SimpleMovement)
+						{
+							prefab.transform.position += ((Vector3)direction.normalized * Speed * DataBase.AllVariables.baseVariables.base_Speed + Offset) * Time.deltaTime;
+						}
+						else
+						{
+							prefab.GetComponent<BaseMovementModel>().SetDirection(direction.normalized * Speed);
+						}
+					}
+
+					if (((Vector2)prefab.transform.position - (Vector2)points[currentPoint].transform.position).magnitude <= distance * Speed)
+					{
+						if (!SimpleMovement)
+							prefab.GetComponent<BaseMovementModel>().SetDirection(Vector2.zero);
+
+						if (points[currentPoint].GetComponent<PointEvents_Base>().getAnimationState() <= GeneralAnimationState.Animationstatus)
+						{
+							isGoing = false;
+						}
 					}
 				}
 			}

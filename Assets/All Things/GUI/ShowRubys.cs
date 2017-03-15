@@ -34,14 +34,14 @@ public class ShowRubys : MonoBehaviour
 			Text.text = ((int)Mathf.Lerp(currrent, expected, time)).ToString();
 
 			time += Time.deltaTime * timemultiplyer;
-			Text.transform.localScale = Vector2.one * scaleAnimation.Evaluate(time);
-			if(time >= 1)
+			Text.transform.localScale = Vector3.one * scaleAnimation.Evaluate(time);
+			if (time >= 1)
 			{
 				Text.text = Character.m_InventoryModel.getItemAmount(ItemType.Ruby).ToString();
 
 				currrent = -1;
 				time = -1;
-				Text.transform.localScale = Vector2.one;
+				Text.transform.localScale = Vector3.one;
 			}
 		}
 	}

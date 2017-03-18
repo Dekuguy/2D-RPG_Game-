@@ -26,7 +26,7 @@ public class BatMovementModel : BaseMovementModel {
             return;
         }
 
-        m_Body.velocity = m_MovementDirection * DataBase.AllVariables.baseVariables.enemy_Speed;
+        m_Body.velocity = m_MovementDirection * DataBase.AllVariables.enemy_Speed;
     }
 
     public override Vector2 GetMovementDirection()

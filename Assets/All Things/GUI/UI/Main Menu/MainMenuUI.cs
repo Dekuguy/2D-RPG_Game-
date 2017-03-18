@@ -7,10 +7,10 @@ public class MainMenuUI : MonoBehaviour
 
 	public void StartGame()
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+		SceneManager.LoadScene(Scene.TestLevel, true);
 	}
 	public void EndGame()
 	{
-		Application.Quit();
+		SceneManager.EndGame();
 	}
 }

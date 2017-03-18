@@ -12,6 +12,9 @@ public class BatBaseController : BaseControl {
     }
 
     protected override void SetDirection(Vector2 direction) {
-        scripts.MovementModel.SetDirection(direction);
+		if (!Gamestates.isPause)
+			scripts.MovementModel.SetDirection(direction);
+		else
+			scripts.MovementModel.SetDirection(Vector2.zero);
     }
 }

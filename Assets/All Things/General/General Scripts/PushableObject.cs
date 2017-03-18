@@ -36,7 +36,7 @@ public class PushableObject : MonoBehaviour
     }
     public bool isBeingPushedTimeOut()
     {
-        return m_PushTime >= DataBase.AllVariables.baseVariables.base_PushTimeout * PushTimeOut;
+        return m_PushTime >= DataBase.AllVariables.base_PushTimeout * PushTimeOut;
     }
 
     public Vector2 getPushDirection()
@@ -46,13 +46,13 @@ public class PushableObject : MonoBehaviour
 
     public void PushCharacterRel(Vector2 pushDirection, float relativetime)
     {
-        m_PushTime = relativetime * DataBase.AllVariables.baseVariables.base_PushTime * Pushtime;
-        m_PushDirection = pushDirection * PushVelocity * DataBase.AllVariables.baseVariables.base_PushVelocity;
+        m_PushTime = relativetime * DataBase.AllVariables.base_PushTime * Pushtime;
+        m_PushDirection = pushDirection * PushVelocity * DataBase.AllVariables.base_PushVelocity;
     }
     public void PushCharacterAbs(Vector2 pushDirection, float absolutetime)
     {
         m_PushTime = absolutetime;
-        m_PushDirection = pushDirection * PushVelocity * DataBase.AllVariables.baseVariables.base_PushVelocity;
+        m_PushDirection = pushDirection * PushVelocity * DataBase.AllVariables.base_PushVelocity;
     }
 
     void FixedUpdate()

@@ -8,4 +8,8 @@ public class AttackableBase : MonoBehaviour
     {
         Debug.LogWarning("No Onhit event Setup: " + gameObject.name, gameObject);
     }
+	protected void Destroy()
+	{
+		SendMessage("GameObjectDestroyed");
+	}
 }

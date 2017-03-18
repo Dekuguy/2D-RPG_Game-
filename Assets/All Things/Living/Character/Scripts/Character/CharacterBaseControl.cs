@@ -7,7 +7,7 @@ public class CharacterBaseControl : BaseControl {
 
     protected override void SetDirection(Vector2 direction)
     {
-		if (!Character.m_MovementModel.IsInAnimation())
+		if (!Character.m_MovementModel.IsInAnimation() && !Gamestates.isPause)
 		{
 			if (Character.m_MovementModel.isPushing())
 			{

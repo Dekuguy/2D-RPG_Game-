@@ -26,15 +26,7 @@ public class CharacterMovementView : BaseMovementView
 		UpdateDirection();
 		UpdateHit();
 		UpdateAttack();
-
-		if (Character.m_MovementModel.isPushing())
-		{
-			
-			_animator.SetBool("isPushing", true);
-		}else
-		{
-			_animator.SetBool("isPushing", false);
-		}
+		UpdatePushing();
 	}
 
 
@@ -92,6 +84,19 @@ public class CharacterMovementView : BaseMovementView
 			{
 				OnAttackFinished();
 			}
+		}
+	}
+	void UpdatePushing()
+	{
+
+		if (Character.m_MovementModel.isPushing())
+		{
+
+			_animator.SetBool("isPushing", true);
+		}
+		else
+		{
+			_animator.SetBool("isPushing", false);
 		}
 	}
 

@@ -16,21 +16,21 @@ public class TestScenePauseMenu : MonoBehaviour {
 
 	public void Pause()
 	{
+		Gamestates.isPause = true;
 		Active = true;
-		WorldFunktions.FreezeLivingMovement(true);
 		UI.SetActive(true);
 	}
 
 	public void Resume()
 	{
-		WorldFunktions.FreezeLivingMovement(false);
+		Gamestates.isPause = false;
 		UI.SetActive(false);
 		Active = false;
 	}
 
 	public void BackToMenu()
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+		SceneManager.LoadScene(Scene.MainMenu, true);
 	}
 
 	void Update()
@@ -40,7 +40,9 @@ public class TestScenePauseMenu : MonoBehaviour {
 			if (Active)
 			{
 				Resume();
-			}else
+				GetComponent<DisableObjects>().EnableOBJ(false);
+			}
+			else
 			{
 				Pause();
 			}

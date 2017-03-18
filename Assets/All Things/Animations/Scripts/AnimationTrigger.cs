@@ -151,7 +151,7 @@ public class AnimationTrigger : MonoBehaviour
 					{
 						if (SimpleMovement)
 						{
-							prefab.transform.position += ((Vector3)direction.normalized * Speed * DataBase.AllVariables.baseVariables.base_Speed + Offset) * Time.deltaTime;
+							prefab.transform.position += ((Vector3)direction.normalized * Speed * DataBase.AllVariables.base_Speed + Offset) * Time.deltaTime;
 						}
 						else
 						{

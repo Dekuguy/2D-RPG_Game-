@@ -20,24 +20,9 @@ public class EnemySpawnItemOnDie : MonoBehaviour {
 	[SerializeField]
 	private GameObject AnimationPrefab;
 
-	private bool quitApp = false;
-	void OnDestroy()
-	{
-		if(!quitApp)
-			Spawn();
-	}
 
-	void OnApplicationQuit()
-	{
-		quitApp = true;
-	}
 
-	private void OnLevelWasLoaded(int level)
-	{
-		quitApp = true;
-	}
-
-	void SpawnItem()
+	void GameObjectDestroyed()
 	{
 		Spawn();
 	}

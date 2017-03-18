@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AllVariables : ScriptableObject
-{
-    public Variables baseVariables;
-}
 
 [System.Serializable]
-public class Variables
+public class AllVariablesDatabase : ScriptableObject
 {
     //----------------------------------------------------------------------------------------------------------------------
     //-----------------------------------               Inspector             ----------------------------------------------
@@ -30,7 +26,7 @@ public class Variables
     [SerializeField]
     private float Character_Speed = 1;
 	[SerializeField]
-	private int Character_Max_Lives;
+	private int Character_Max_Lives = 16;
 
     //Enemys
     [Header("Enemys Variables")]

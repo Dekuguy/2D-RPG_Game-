@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class ItemDataBaseCreator : MonoBehaviour {
     
-    [MenuItem("Custom Manager/Databases/CreateItemDataBase")]
+    [MenuItem("Custom Manager/Databases/Create ItemDataBase")]
     public static void CreatItemDataBase()
     {
         ItemDatabase newDatabase = ScriptableObject.CreateInstance<ItemDatabase>();
@@ -13,11 +13,19 @@ public class ItemDataBaseCreator : MonoBehaviour {
         AssetDatabase.Refresh();
     }
 
-    [MenuItem("Custom Manager/All Living Things/CreatVariables")]
+    [MenuItem("Custom Manager/Databases/Create AllVariablesVariablesDatabase")]
     public static void CreatBarVariables()
     {
-        AllVariables newDatabaseVars = ScriptableObject.CreateInstance<AllVariables>();
-        AssetDatabase.CreateAsset(newDatabaseVars, "Assets/AllThingsVariables.asset");
+		AllVariablesDatabase newDatabaseVars = ScriptableObject.CreateInstance<AllVariablesDatabase>();
+        AssetDatabase.CreateAsset(newDatabaseVars, "Assets/AllVariablesDatabase.asset");
         AssetDatabase.Refresh();
     }
+
+	[MenuItem("Custom Manager/Databases/Create SettingsDatabase")]
+	public static void CreateOptionVariables()
+	{
+		OptionsDatabase newDatabaseVars = ScriptableObject.CreateInstance<OptionsDatabase>();
+		AssetDatabase.CreateAsset(newDatabaseVars, "Assets/OptionsDatabase.asset");
+		AssetDatabase.Refresh();
+	}
 }

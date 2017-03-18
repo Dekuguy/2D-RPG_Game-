@@ -22,12 +22,11 @@ public class ShowHearts : MonoBehaviour
 
 	private void Start()
 	{
-
 		Hearts = new List<Heart>();
 
 		int row;
 		int rowindex;
-		for (int i = 0; i < DataBase.AllVariables.baseVariables.character_MaxLives; i++)
+		for (int i = 0; i < DataBase.AllVariables.character_MaxLives; i++)
 		{
 			row = i / maxX;
 			rowindex = i - (maxX * row);
@@ -66,6 +65,7 @@ class Heart
 
 	public Heart(GameObject image, Transform transform, float x, float y, float size)
 	{
+		Debug.Log("Test");
 		this.image = MonoBehaviour.Instantiate(image, transform, false);
 		this.image.transform.localPosition = new Vector3(x, y);
 		this.x = x;

@@ -15,18 +15,19 @@ public class AttackableCharacter : AttackableBase {
         if(lives <= 0)
         {
             WorldFunktions.FreezeLivingMovement(true);
-            GetComponentInChildren<SpriteRenderer>().enabled = false;
+			GetComponentInChildren<SpriteRenderer>().enabled = false;
+			Destroy();
         }
     }
 
 	public void AddHearts(int amount)
 	{
-		if(lives + amount <= DataBase.AllVariables.baseVariables.character_MaxLives)
+		if(lives + amount <= DataBase.AllVariables.character_MaxLives)
 		{
 			lives += amount;
 		}else
 		{
-			lives = DataBase.AllVariables.baseVariables.character_MaxLives;
+			lives = DataBase.AllVariables.character_MaxLives;
 		}
 	}
 	public void SetHearts(int amount)

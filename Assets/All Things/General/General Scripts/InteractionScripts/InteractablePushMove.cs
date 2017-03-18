@@ -30,19 +30,25 @@ public class InteractablePushMove : InteractableBase {
 
 	private void OnTriggerEnter2D()
 	{
-		if (t.follow)
+		if (t)
 		{
-			disabledDirection = Character.m_MovementModel.GetFacingDirection();
-			Debug.Log(disabledDirection);
+			if (t.follow)
+			{
+				disabledDirection = Character.m_MovementModel.GetFacingDirection();
+				Debug.Log(disabledDirection);
 
-			Character.m_MovementModel.DisableSpecificDirectionMovement(disabledDirection);
+				Character.m_MovementModel.DisableSpecificDirectionMovement(disabledDirection);
+			}
 		}
 	}
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		if (t.follow)
+		if (t)
 		{
-			Character.m_MovementModel.EnableSpecificDirectionMovement(disabledDirection);
+			if (t.follow)
+			{
+				Character.m_MovementModel.EnableSpecificDirectionMovement(disabledDirection);
+			}
 		}
 	}
 }

@@ -394,7 +394,8 @@ public class DialogeBox : MonoBehaviour
 
 		if (isShowing)
 		{
-			TextBlocks[TextBlockCount].Update();
+			if(!Gamestates.isPause)
+				TextBlocks[TextBlockCount].Update();
 			TextObject.text = TextBlocks[TextBlockCount].getText();
 
 

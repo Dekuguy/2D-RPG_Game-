@@ -117,7 +117,7 @@ public class CharacterInteractionModel : MonoBehaviour
 
 		Character.m_MovementModel.setisPushing(true);
 
-		DataBase.AllVariables.baseVariables.character_Speed = 0.5f;
+		DataBase.AllVariables.character_Speed = 0.5f;
 
 		MovableOBJ = obj;
 
@@ -129,7 +129,7 @@ public class CharacterInteractionModel : MonoBehaviour
 
 		MovableOBJ.SendMessage("DetachParent", SendMessageOptions.DontRequireReceiver);
 
-		DataBase.AllVariables.baseVariables.character_Speed = 1;
+		DataBase.AllVariables.character_Speed = 1;
 		Character.m_MovementModel.setisPushing(false);
 		Character.m_MovementModel.EnableDirectionMovementComplete();
 

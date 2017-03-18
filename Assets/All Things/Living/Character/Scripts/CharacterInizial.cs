@@ -20,7 +20,7 @@ public class CharacterInizial : MonoBehaviour {
 	private void Start()
 	{
 		if(Speed != 0)
-			DataBase.AllVariables.baseVariables.character_Speed = Speed;
+			DataBase.AllVariables.character_Speed = Speed;
 		if (Lives != 0)
 			GetComponent<AttackableCharacter>().SetHearts(Lives);
 		if (Rubins != 0)

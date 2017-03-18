@@ -45,7 +45,7 @@ public class CharacterMovementModel : BaseMovementModel
 	{
 		Vector2 movement = Vector2.zero;
 
-		if (!m_isFrozen || m_canMove)
+		if ((!m_isFrozen || m_canMove))
 		{
 
 			if (isPushableObject)
@@ -61,12 +61,12 @@ public class CharacterMovementModel : BaseMovementModel
 				if (isPushableObject)
 				{
 					if (!GetComponent<PushableObject>().isBeingPushedTimeOut() && !isAttacking())
-						movement = m_MovementDirection * DataBase.AllVariables.baseVariables.character_Speed;
+						movement = m_MovementDirection * DataBase.AllVariables.character_Speed;
 				}
 				else
 				{
 					if (!isAttacking())
-						movement = m_MovementDirection * DataBase.AllVariables.baseVariables.character_Speed;
+						movement = m_MovementDirection * DataBase.AllVariables.character_Speed;
 				}
 			}
 		}

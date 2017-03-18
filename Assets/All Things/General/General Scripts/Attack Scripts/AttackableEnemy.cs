@@ -19,6 +19,7 @@ public class AttackableEnemy : AttackableBase
             GetComponent<Bat>().MovementView.Die();
             GetComponent<Bat>().MovementModel.SetCanMove(false);
             this.gameObject.layer = LayerMask.NameToLayer("NoCollision");
+			Destroy();
         }
     }
 

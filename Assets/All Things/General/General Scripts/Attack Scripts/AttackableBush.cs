@@ -18,7 +18,7 @@ public class AttackableBush : AttackableBase {
 			destroyEffect.transform.position = this.transform.position;
 		}
 
-		SendMessage("SpawnItem");
+		Destroy();
     }
 
 	public void PickUp()

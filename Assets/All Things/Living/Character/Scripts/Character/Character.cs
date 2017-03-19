@@ -14,6 +14,8 @@ public class Character : Base
     private CharacterInventoryModel InventoryModel;
 	[SerializeField]
 	private AttackableCharacter AttackableCharacter;
+	[SerializeField]
+	private CharacterAudio AudioCharacter;
 
 
     public static Character character;
@@ -24,6 +26,7 @@ public class Character : Base
     public static CharacterInteractionModel m_InteractionModel;
     public static CharacterInventoryModel m_InventoryModel;
 	public static AttackableCharacter m_AttackableCharacter;
+	public static CharacterAudio m_CharacterAudio;
 
     void Awake()
     {
@@ -34,5 +37,6 @@ public class Character : Base
         m_MovementView = MovementView;
         m_InventoryModel = InventoryModel;
 		m_AttackableCharacter = AttackableCharacter;
+		m_CharacterAudio = AudioCharacter;
     }
 }

@@ -23,6 +23,7 @@ public class InteractablePickUp : InteractableBase
 	[SerializeField]
 	private GameObject ParticleEffect;
 
+
 	private float time = -1;
 	private Vector3 startposition;
 	private Vector2 direction;
@@ -34,6 +35,8 @@ public class InteractablePickUp : InteractableBase
 
 	public void Throw(Vector2 direction)
 	{
+
+
 		transform.parent = null;
 		Collider2D col = GetComponent<Collider2D>();
 		if (col)

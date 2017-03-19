@@ -12,6 +12,10 @@ public class PickUpItem_Ruby : PickUpItem {
 	[SerializeField]
 	private float animationmultiplyer = 1;
 
+	[Space]
+	[SerializeField]
+	private SoundData PickUpSound;
+
 	private float time = -1f;
 
 	private GameObject child;
@@ -22,6 +26,9 @@ public class PickUpItem_Ruby : PickUpItem {
 
 		if (col.tag == "Player")
 		{
+			if(PickUpSound != null)
+				GetComponent<AudioSource>().PlayOneShot(PickUpSound.Audio, PickUpSound.volume);
+
 			Character.m_InventoryModel.AddItem(ItemType.Ruby, RubyAmount);
 
 			if(GetComponent<Collider2D>())

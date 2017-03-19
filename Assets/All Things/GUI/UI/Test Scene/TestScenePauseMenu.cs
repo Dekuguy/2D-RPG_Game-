@@ -11,6 +11,7 @@ public class TestScenePauseMenu : MonoBehaviour {
 
 	private void Start()
 	{
+		GetComponent<DisableObjects>().EnableOBJ(false);
 		Resume();
 	}
 
@@ -47,5 +48,10 @@ public class TestScenePauseMenu : MonoBehaviour {
 				Pause();
 			}
 		}
+	}
+
+	private void OnApplicationPause(bool pause)
+	{
+		Pause();
 	}
 }

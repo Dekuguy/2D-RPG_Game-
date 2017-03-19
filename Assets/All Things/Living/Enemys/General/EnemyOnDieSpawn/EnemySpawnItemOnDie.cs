@@ -19,12 +19,16 @@ public class EnemySpawnItemOnDie : MonoBehaviour {
 	private GameObject prefab;
 	[SerializeField]
 	private GameObject AnimationPrefab;
+	[SerializeField]
+	private SoundData DropSound;
 
 
 
 	void GameObjectDestroyed()
 	{
 		Spawn();
+		if(DropSound != null)
+			GetComponent<AudioSource>().PlayOneShot(DropSound.Audio, DropSound.volume);
 	}
 
 	void Spawn()

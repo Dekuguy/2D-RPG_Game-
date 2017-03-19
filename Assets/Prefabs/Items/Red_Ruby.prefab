@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4935746508982770}
   - component: {fileID: 212100483547516588}
   - component: {fileID: 95409225901917740}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,8 @@ GameObject:
   - component: {fileID: 4021913752672886}
   - component: {fileID: 61017022711356286}
   - component: {fileID: 114780780235314700}
-  m_Layer: 0
+  - component: {fileID: 82831076858386166}
+  m_Layer: 14
   m_Name: Red_Ruby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892792861154400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0352721, y: 15.8461275, z: 0}
+  m_LocalPosition: {x: 7.39, y: -1.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4935746508982770}
@@ -86,6 +87,86 @@ BoxCollider2D:
   m_Offset: {x: -0.010649443, y: 0.23428154}
   serializedVersion: 2
   m_Size: {x: 0.51013875, y: 0.8083126}
+--- !u!82 &82831076858386166
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892792861154400}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95409225901917740
 Animator:
   serializedVersion: 3
@@ -146,6 +227,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   animationmultiplyer: 1.2
+  PickUpSound:
+    Audio: {fileID: 8300000, guid: 0776530c003bca340ad3328f71d152f0, type: 3}
+    volume: 1
 --- !u!212 &212100483547516588
 SpriteRenderer:
   m_ObjectHideFlags: 1

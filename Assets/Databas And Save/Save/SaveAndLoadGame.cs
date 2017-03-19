@@ -20,8 +20,6 @@ public class SaveAndLoadGame : MonoBehaviour {
 		FileStream file = File.Open(Application.persistentDataPath + "\\playerinfo.dat", FileMode.Open);
 		bf.Serialize(file, m_saveOptions);
 		file.Close();
-
-		Debug.Log(m_saveOptions.BloomEffectIntensity);
 	}
 
 	public static void Load()
@@ -31,8 +29,6 @@ public class SaveAndLoadGame : MonoBehaviour {
 		FileStream file = File.Open(Application.persistentDataPath + "\\playerinfo.dat", FileMode.Open);
 		SaveOptions t = (SaveOptions)bf.Deserialize(file);
 		file.Close();
-
-		Debug.Log(m_saveOptions.BloomEffectIntensity);
 
 		m_saveOptions = t;
 	}

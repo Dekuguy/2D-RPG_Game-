@@ -17,7 +17,7 @@ public class CharacterInizial : MonoBehaviour {
 	[Tooltip("The First is the - if possible - equipped one and the second on the other hand")]
 	private List<StartUpItems> startupItems;
 
-	private void Start()
+	private void Awake()
 	{
 		if(Speed != 0)
 			DataBase.AllVariables.character_Speed = Speed;

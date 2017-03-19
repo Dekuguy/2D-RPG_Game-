@@ -9,9 +9,16 @@ public class AttackableBush : AttackableBase {
     [SerializeField]
     private GameObject DestroyEffect;
 
+	[SerializeField]
+	private SoundData DestroySound;
+
     public override void OnHit(ItemType item)
     {
 		PickUp();
+		if(DestroySound != null)
+		{
+			GetComponent<AudioSource>().PlayOneShot(DestroySound.Audio, DestroySound.volume);
+		}
 		if (DestroyEffect != null)
 		{
 			GameObject destroyEffect = (GameObject)Instantiate(DestroyEffect);

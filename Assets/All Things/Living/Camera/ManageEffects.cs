@@ -8,5 +8,6 @@ public class ManageEffects : MonoBehaviour {
 	private void Update()
 	{
 		GetComponent<UnityStandardAssets.ImageEffects.Bloom>().bloomIntensity = SaveAndLoadGame.m_saveOptions.BloomEffectIntensity;
+		AudioListener.volume = SaveAndLoadGame.m_saveOptions.Volume;
 	}
 }

@@ -15,9 +15,14 @@ public class SoundManager : MonoBehaviour {
 
 	private void Start()
 	{
+		PlaySound(OverworldSound.Audio, OverworldSound.volume);
+	}
+
+	private void PlaySound(AudioClip clip, float volume)
+	{
 		_Audio.loop = true;
-		_Audio.volume = OverworldSound.volume;
-		_Audio.clip = OverworldSound.Audio;
+		_Audio.volume = volume;
+		_Audio.clip = clip;
 		_Audio.Play();
 	}
 }

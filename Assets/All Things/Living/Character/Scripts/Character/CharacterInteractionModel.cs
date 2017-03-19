@@ -88,6 +88,8 @@ public class CharacterInteractionModel : MonoBehaviour
 
 	public void LiftUpObject(GameObject obj)
 	{
+		Character.m_CharacterAudio.LiftUpItem();
+
 		if (!obj.GetComponent<InteractablePickUp>().TakeOrginial)
 			LiftedUpOBJ = Instantiate(obj);
 		else

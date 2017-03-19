@@ -65,7 +65,6 @@ class Heart
 
 	public Heart(GameObject image, Transform transform, float x, float y, float size)
 	{
-		Debug.Log("Test");
 		this.image = MonoBehaviour.Instantiate(image, transform, false);
 		this.image.transform.localPosition = new Vector3(x, y);
 		this.x = x;
